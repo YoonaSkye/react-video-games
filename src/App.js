@@ -1,15 +1,13 @@
 import "./App.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-
-import { loadGames } from "./actions/gamesAction";
+// pages && components
+import Home from "./pages/Home";
 
 function App() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(loadGames());
-  }, []);
-  return <div className="App">New App!</div>;
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
 }
 
 export default App;
