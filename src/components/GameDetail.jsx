@@ -73,7 +73,7 @@ const CardShadow = styled(motion.div)`
 const Detail = styled(motion.div)`
   width: 80%;
   border-radius: 1rem;
-  padding: 2rem 20rem;
+  padding: 2rem 5rem;
   background: white;
   position: absolute;
   left: 10%;
@@ -82,7 +82,6 @@ const Detail = styled(motion.div)`
     width: 100%;
   }
 `;
-
 const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
