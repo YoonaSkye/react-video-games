@@ -44,7 +44,7 @@ const GameDetail = () => {
             </Stats>
             <Media>
               <img
-                src={detail.background_image}
+                src={smallImage(detail.background_image, 1280)}
                 alt={detail.background_image}
               />
             </Media>

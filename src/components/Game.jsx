@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { smallImage } from "../utils";
 
 // redux
 import { useDispatch } from "react-redux";
@@ -22,7 +23,8 @@ const Game = ({ id, name, released, image }) => {
       <Link to={`game/${id}`}>
         <h3>{name}</h3>
         <p>{released}</p>
-        <img src={image} alt={name} />
+        {/* <img src={image} alt={name} /> */}
+        <img src={smallImage(image, 640)} alt={name} />
       </Link>
     </StyledGame>
   );
