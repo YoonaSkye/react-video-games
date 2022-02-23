@@ -12,9 +12,6 @@ import { motion } from "framer-motion";
 const Game = ({ id, name, released, image }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(loadDetail(303576));
-  }, []);
   return (
     <StyledGame onClick={() => dispatch(loadDetail(id))}>
       <Link to={`game/${id}`}>

@@ -9,45 +9,52 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const GameDetail = () => {
-  const { detail, screenshot } = useSelector((state) => state.detail);
+  const { detail, screenshot, isLoading } = useSelector(
+    (state) => state.detail
+  );
 
   return (
-    <CardShadow>
-      <Detail>
-        GameDetail
-        <Stats>
-          <div className="rating">
-            <h3>{detail.name}</h3>
-            <p>Rating: {detail.rating}</p>
-          </div>
-          <Info>
-            <h3>platforms</h3>
-            <Platforms>
-              {detail.platforms &&
-                detail.platforms.map((item) => (
-                  <h3 key={item.platform.id}>{item.platform.name}</h3>
-                ))}
-            </Platforms>
-          </Info>
-        </Stats>
-        <Media>
-          <img src={detail.background_image} alt={detail.background_image} />
-        </Media>
-        <Description>
-          <p>{detail.description_raw}</p>
-        </Description>
-        <div className="gallery">
-          {screenshot.results &&
-            screenshot.results.map((item) => (
+    <>
+      {!isLoading && (
+        <CardShadow>
+          <Detail>
+            GameDetail
+            <Stats>
+              <div className="rating">
+                <h3>{detail.name}</h3>
+                <p>Rating: {detail.rating}</p>
+              </div>
+              <Info>
+                <h3>platforms</h3>
+                <Platforms>
+                  {detail.platforms.map((item) => (
+                    <h3 key={item.platform.id}>{item.platform.name}</h3>
+                  ))}
+                </Platforms>
+              </Info>
+            </Stats>
+            <Media>
               <img
-                key={item.id}
-                src={smallImage(item.image, 1280)}
-                alt={item.image}
+                src={detail.background_image}
+                alt={detail.background_image}
               />
-            ))}
-        </div>
-      </Detail>
-    </CardShadow>
+            </Media>
+            <Description>
+              <p>{detail.description_raw}</p>
+            </Description>
+            <div className="gallery">
+              {screenshot.results.map((item) => (
+                <img
+                  key={item.id}
+                  src={smallImage(item.image, 1280)}
+                  alt={item.image}
+                />
+              ))}
+            </div>
+          </Detail>
+        </CardShadow>
+      )}
+    </>
   );
 };
 
