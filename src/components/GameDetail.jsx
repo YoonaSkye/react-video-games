@@ -9,6 +9,15 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+// images
+//IMAGES
+import playstation from "../img/playstation.svg";
+import steam from "../img/steam.svg";
+import xbox from "../img/xbox.svg";
+import nintendo from "../img/nintendo.svg";
+import apple from "../img/apple.svg";
+import gamepad from "../img/gamepad.svg";
+
 const GameDetail = (pathId) => {
   const history = useHistory();
   const { detail, screenshot, isLoading } = useSelector(
@@ -19,6 +28,24 @@ const GameDetail = (pathId) => {
     if (e.target.classList.contains("shadow")) {
       document.body.style.overflow = "auto";
       history.push("/");
+    }
+  };
+
+  //获取对应平台的图像
+  const getPlatform = (platform) => {
+    switch (platform) {
+      case "PlayStation 4":
+        return playstation;
+      case "Xbox One":
+        return xbox;
+      case "PC":
+        return steam;
+      case "Nintendo Switch":
+        return nintendo;
+      case "iOS":
+        return apple;
+      default:
+        return gamepad;
     }
   };
 
@@ -40,7 +67,12 @@ const GameDetail = (pathId) => {
                 <h3>platforms</h3>
                 <Platforms>
                   {detail.platforms.map((item) => (
-                    <h3 key={item.platform.id}>{item.platform.name}</h3>
+                    // <h3 key={item.platform.id}>{item.platform.name}</h3>
+                    <img
+                      key={item.platform.id}
+                      src={getPlatform(item.platform.name)}
+                      alt={item.platform.name}
+                    />
                   ))}
                 </Platforms>
               </Info>
@@ -79,6 +111,8 @@ const CardShadow = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 5;
+
   &::-webkit-scrollbar {
     width: 0.5rem;
   }
@@ -98,6 +132,7 @@ const Detail = styled(motion.div)`
   position: absolute;
   left: 10%;
   color: black;
+  z-index: 10;
   img {
     width: 100%;
   }
