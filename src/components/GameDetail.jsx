@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const GameDetail = () => {
+const GameDetail = (pathId) => {
   const history = useHistory();
   const { detail, screenshot, isLoading } = useSelector(
     (state) => state.detail
@@ -26,11 +26,14 @@ const GameDetail = () => {
     <>
       {!isLoading && (
         <CardShadow className="shadow" onClick={exitDetailHandler}>
-          <Detail>
+          <Detail layoutId={pathId}>
             GameDetail
             <Stats>
               <div className="rating">
-                <h3>{detail.name}</h3>
+                {/* <h3>{detail.name}</h3> */}
+                <motion.h3 layoutId={`title ${pathId}`}>
+                  {detail.name}
+                </motion.h3>
                 <p>Rating: {detail.rating}</p>
               </div>
               <Info>
@@ -43,7 +46,8 @@ const GameDetail = () => {
               </Info>
             </Stats>
             <Media>
-              <img
+              <motion.img
+                layoutId={`image ${pathId}`}
                 src={smallImage(detail.background_image, 1280)}
                 alt={detail.background_image}
               />
