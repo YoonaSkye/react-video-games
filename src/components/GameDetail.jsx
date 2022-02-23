@@ -1,4 +1,7 @@
 import React from "react";
+import { smallImage } from "../utils";
+
+// redux
 import { useSelector } from "react-redux";
 
 // styles
@@ -36,7 +39,11 @@ const GameDetail = () => {
         <div className="gallery">
           {screenshot.results &&
             screenshot.results.map((item) => (
-              <img key={item.id} src={item.image} alt={item.image} />
+              <img
+                key={item.id}
+                src={smallImage(item.image, 1280)}
+                alt={item.image}
+              />
             ))}
         </div>
       </Detail>
