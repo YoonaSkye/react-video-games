@@ -35,5 +35,15 @@ const upcomingGamesURL = () => `${base_url}${upcomingGames}`;
 const newGamesURL = () => `${base_url}${newGames}`;
 
 // 游戏详情
+const gameDetailURL = (game_id) => `${base_url}games/${game_id}?&key=${apiKey}`;
 
-export { popularGamesURL, upcomingGamesURL, newGamesURL };
+const gameScreenshotURL = (game_id) =>
+  `${base_url}games/${game_id}/screenshots?&key=${apiKey}`;
+
+export {
+  popularGamesURL,
+  upcomingGamesURL,
+  newGamesURL,
+  gameDetailURL,
+  gameScreenshotURL,
+};
