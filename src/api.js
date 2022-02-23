@@ -40,10 +40,14 @@ const gameDetailURL = (game_id) => `${base_url}games/${game_id}?&key=${apiKey}`;
 const gameScreenshotURL = (game_id) =>
   `${base_url}games/${game_id}/screenshots?&key=${apiKey}`;
 
+const searchGameURL = (game_name) =>
+  `${base_url}games?search=${game_name}&page_size=9&key=${apiKey}`;
+
 export {
   popularGamesURL,
   upcomingGamesURL,
   newGamesURL,
   gameDetailURL,
   gameScreenshotURL,
+  searchGameURL,
 };

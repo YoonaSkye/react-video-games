@@ -19,7 +19,9 @@ const Home = () => {
 
   // 获取数据
   const dispatch = useDispatch();
-  const { popular, upcoming, newGames } = useSelector((state) => state.games);
+  const { popular, upcoming, newGames, searched } = useSelector(
+    (state) => state.games
+  );
 
   useEffect(() => {
     dispatch(loadGames());
@@ -30,6 +32,24 @@ const Home = () => {
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
         </AnimatePresence>
+        {searched.length ? (
+          <div className="searched">
+            <h2>Searched Games</h2>
+            <Games>
+              {searched.map((game) => (
+                <Game
+                  name={game.name}
+                  released={game.released}
+                  id={game.id}
+                  image={game.background_image}
+                  key={game.id}
+                />
+              ))}
+            </Games>
+          </div>
+        ) : (
+          ""
+        )}
         <h2>Popular Games</h2>
         <Games>
           {popular.map((game) => (
