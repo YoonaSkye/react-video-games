@@ -27,18 +27,6 @@ const Home = () => {
   return (
     <GameList>
       {pathId && <GameDetail />}
-      <h2>Upcoming Games</h2>
-      <Games>
-        {upcoming.map((game) => (
-          <Game
-            key={game.id}
-            id={game.id}
-            name={game.name}
-            image={game.background_image}
-            released={game.released}
-          />
-        ))}
-      </Games>
       <h2>Popular Games</h2>
       <Games>
         {popular.map((game) => (
@@ -48,6 +36,18 @@ const Home = () => {
             id={game.id}
             image={game.background_image}
             key={game.id}
+          />
+        ))}
+      </Games>
+      <h2>Upcoming Games</h2>
+      <Games>
+        {upcoming.map((game) => (
+          <Game
+            key={game.id}
+            id={game.id}
+            name={game.name}
+            image={game.background_image}
+            released={game.released}
           />
         ))}
       </Games>

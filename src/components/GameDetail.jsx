@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { smallImage } from "../utils";
 
 // redux
@@ -9,14 +10,22 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const GameDetail = () => {
+  const history = useHistory();
   const { detail, screenshot, isLoading } = useSelector(
     (state) => state.detail
   );
 
+  const exitDetailHandler = (e) => {
+    if (e.target.classList.contains("shadow")) {
+      document.body.style.overflow = "auto";
+      history.push("/");
+    }
+  };
+
   return (
     <>
       {!isLoading && (
-        <CardShadow>
+        <CardShadow className="shadow" onClick={exitDetailHandler}>
           <Detail>
             GameDetail
             <Stats>
@@ -93,6 +102,11 @@ const Stats = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  img {
+    width: 2rem;
+    height: 2rem;
+    display: inline;
+  }
 `;
 const Info = styled(motion.div)`
   text-align: center;
