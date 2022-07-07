@@ -5,18 +5,8 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 
 // 配置Redux
-import { createStore, applyMiddleware, compose } from "redux";
+import store from "./app/store";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
-
-import rootReducer from "./reducer/rootReducer";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk))
-);
 
 ReactDOM.render(
   <React.StrictMode>

@@ -5,7 +5,7 @@ import GlobalStyles from "./components/GlobalStyles";
 import Nav from "./components/Nav";
 
 // router
-import { Route, Switch } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function App() {
   return (

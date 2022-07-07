@@ -72,7 +72,6 @@ const GameDetail = (pathId) => {
             GameDetail
             <Stats>
               <div className="rating">
-                {/* <h3>{detail.name}</h3> */}
                 <motion.h3 layoutId={`title ${pathId}`}>
                   {detail.name}
                 </motion.h3>
@@ -83,7 +82,6 @@ const GameDetail = (pathId) => {
                 <h3>platforms</h3>
                 <Platforms>
                   {detail.platforms.map((item) => (
-                    // <h3 key={item.platform.id}>{item.platform.name}</h3>
                     <img
                       key={item.platform.id}
                       src={getPlatform(item.platform.name)}

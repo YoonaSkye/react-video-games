@@ -1,91 +1,66 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { loadGames } from "../actions/gamesAction";
+import { loadGames } from "../features/games/gamesSlice";
 
 // styles
 import styled from "styled-components";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 
 // components
-import Game from "../components/Game";
+import Games from "../components/Games";
 import GameDetail from "../components/GameDetail";
+import { Spinner } from "../components/Spinner";
+import ScroollToAnchor from "../components/ScroollToAnchor";
 
 const Home = () => {
   const location = useLocation();
   const pathId = location.pathname.split("/")[2];
-  console.log("location", pathId);
 
   // 获取数据
   const dispatch = useDispatch();
-  const { popular, upcoming, newGames, searched } = useSelector(
+  const { popular, upcoming, newGames, searched, status, error } = useSelector(
     (state) => state.games
   );
 
   useEffect(() => {
-    dispatch(loadGames());
-  }, [dispatch]);
+    if (status === "idle") {
+      dispatch(loadGames());
+    }
+  }, [status, dispatch]);
+
+  let content;
+  if (status === "loading") {
+    content = <Spinner text="Loading..." />;
+  } else if (status === "success") {
+    content = (
+      <>
+        <Games games={popular} type="Popular" />
+        <Games games={upcoming} type="Upcoming" />
+        <Games games={newGames} type="New" />
+      </>
+    );
+  } else if (status === "failed") {
+    content = <div>{error}</div>;
+  }
+
   return (
     <GameList>
       <AnimateSharedLayout type="crossfade">
         <AnimatePresence>
           {pathId && <GameDetail pathId={pathId} />}
         </AnimatePresence>
+        <ScroollToAnchor />
         {searched.length ? (
           <div className="searched">
-            <h2>Searched Games</h2>
-            <Games>
-              {searched.map((game) => (
-                <Game
-                  name={game.name}
-                  released={game.released}
-                  id={game.id}
-                  image={game.background_image}
-                  key={game.id}
-                />
-              ))}
-            </Games>
+            <Games games={searched} type="Searched" />
           </div>
         ) : (
           ""
         )}
-        <h2>Popular Games</h2>
-        <Games>
-          {popular.map((game) => (
-            <Game
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              key={game.id}
-            />
-          ))}
-        </Games>
-        <h2>Upcoming Games</h2>
-        <Games>
-          {upcoming.map((game) => (
-            <Game
-              key={game.id}
-              id={game.id}
-              name={game.name}
-              image={game.background_image}
-              released={game.released}
-            />
-          ))}
-        </Games>
-        <h2>New Games</h2>
-        <Games>
-          {newGames.map((game) => (
-            <Game
-              name={game.name}
-              released={game.released}
-              id={game.id}
-              image={game.background_image}
-              key={game.id}
-            />
-          ))}
-        </Games>
+        {content}
       </AnimateSharedLayout>
     </GameList>
   );
@@ -96,14 +71,6 @@ const GameList = styled(motion.div)`
   h2 {
     padding: 5rem 0rem;
   }
-`;
-
-const Games = styled(motion.div)`
-  min-height: 80vh;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  grid-column-gap: 3rem;
-  grid-row-gap: 5rem;
 `;
 
 export default Home;

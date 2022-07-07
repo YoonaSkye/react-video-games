@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+
 // redux
 import { useDispatch } from "react-redux";
-import { fetchSearch } from "../actions/gamesAction";
+import { fetchSearch } from "../features/games/gamesSlice";
 
 // styles
 import styled from "styled-components";
@@ -41,6 +42,7 @@ const Nav = () => {
 };
 
 const StyledNav = styled(motion.nav)`
+  background: var(--redux-color);
   padding: 3rem 5rem;
   text-align: center;
   input {

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { smallImage } from "../utils";
 
 // redux
 import { useDispatch } from "react-redux";
-import loadDetail from "../actions/detailAction";
+// import loadDetail from "../actions/detailAction";
+import { loadDetail } from "../features/detail/detailSlice";
 
 // styles
 import styled from "styled-components";
