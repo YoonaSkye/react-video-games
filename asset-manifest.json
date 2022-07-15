@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-video-games/static/css/main.57300d36.css",
-    "main.js": "/react-video-games/static/js/main.7f974c90.js",
+    "main.js": "/react-video-games/static/js/main.0886966d.js",
     "static/media/steam.svg": "/react-video-games/static/media/steam.d7b8819f879421dc2f25a3474964687d.svg",
     "static/media/playstation.svg": "/react-video-games/static/media/playstation.18cc4b9ca49a92b00bb7958e88c5b9ad.svg",
     "static/media/xbox.svg": "/react-video-games/static/media/xbox.3e7db73549794056f91af6a980fbc4a4.svg",
@@ -11,10 +11,10 @@
     "static/media/apple.svg": "/react-video-games/static/media/apple.5757c37e1a2b3d89e03deb9212a997e8.svg",
     "static/media/logo.svg": "/react-video-games/static/media/logo.9b6b8655566296b0edaa86ec3dbac3a0.svg",
     "main.57300d36.css.map": "/react-video-games/static/css/main.57300d36.css.map",
-    "main.7f974c90.js.map": "/react-video-games/static/js/main.7f974c90.js.map"
+    "main.0886966d.js.map": "/react-video-games/static/js/main.0886966d.js.map"
   },
   "entrypoints": [
     "static/css/main.57300d36.css",
-    "static/js/main.7f974c90.js"
+    "static/js/main.0886966d.js"
   ]
 }
