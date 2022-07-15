@@ -17,15 +17,9 @@ const ScroollToAnchor = () => {
     <StyledNav>
       <div className="navContent">
         <div className="navLinks">
-          <a onClick={() => scrollToAnchor("Popolar")} href>
-            Popular
-          </a>
-          <a onClick={() => scrollToAnchor("Upcoming")} href>
-            Upcoming
-          </a>
-          <a onClick={() => scrollToAnchor("New")} href>
-            New
-          </a>
+          <a onClick={() => scrollToAnchor("Popolar")}>Popular</a>
+          <a onClick={() => scrollToAnchor("Upcoming")}>Upcoming</a>
+          <a onClick={() => scrollToAnchor("New")}>New</a>
         </div>
       </div>
     </StyledNav>

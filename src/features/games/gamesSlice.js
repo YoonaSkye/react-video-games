@@ -52,7 +52,6 @@ const gamesSlice = createSlice({
         state.popular = popular;
         state.upcoming = upcoming;
         state.newGames = newGames;
-        console.log("payload", action.payload);
       })
       .addCase(loadGames.rejected, (state, action) => {
         state.status = "failed";
